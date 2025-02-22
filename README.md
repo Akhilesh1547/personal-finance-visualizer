@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Finance Visualizer
+
+This is a **Personal Finance Visualizer** web application built using Next.js and MongoDB. It helps users track their expenses, categorize spending, and visualize financial data with interactive charts.
+
+## Features
+
+✅ **Add, Edit, and Delete Transactions**  
+✅ **Categorize Expenses** (Food, Rent, Entertainment, etc.)  
+✅ **Dashboard with Summary Cards**  
+✅ **Pie Chart for Spending Breakdown**  
+✅ **Responsive UI**  
+
+## Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Backend:** MongoDB (Mongoose), Next.js API Routes
+- **Charts:** Recharts
+
+## Project Structure
+
+```
+personal-finance-visualizer/
+│── public/                # Static assets
+│── src/
+│   ├── components/        # UI components
+│   │   ├── TransactionForm.js
+│   │   ├── TransactionList.js
+│   │   ├── ExpenseChart.js
+│   │   ├── DashboardSummary.js
+│   ├── pages/
+│   │   ├── index.js       # Home page (list transactions)
+│   │   ├── add.js         # Add/Edit transaction page
+│   ├── models/            # Mongoose models
+│   │   ├── Transaction.js
+│   ├── services/          # API functions
+│   │   ├── transactionService.js
+│   ├── utils/             # Helper functions
+│   │   ├── dbConnect.js   # MongoDB connection
+│   ├── styles/            # Tailwind CSS styles
+│── .env.local             # Environment variables
+│── package.json           # Project dependencies
+│── next.config.js         # Next.js config
+│── README.md              # Project documentation
+```
 
 ## Getting Started
 
-First, run the development server:
-
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/personal-finance-visualizer.git
+cd personal-finance-visualizer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install  # or yarn install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Set Up Environment Variables
+Create a `.env.local` file and add the following:
+```bash
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the Development Server
+```bash
+npm run dev  # or yarn dev
+```
+> Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+### **Transactions API**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### 📌 Get All Transactions
+```http
+GET /api/transactions
+```
+#### 📌 Add a Transaction
+```http
+POST /api/transactions
+```
+**Body:**
+```json
+{
+  "description": "Groceries",
+  "amount": 500,
+  "category": "Food",
+  "date": "2025-02-22"
+}
+```
+#### 📌 Delete a Transaction
+```http
+DELETE /api/transactions/:id
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
+The easiest way to deploy this project is on **Vercel**.
 
-## Deploy on Vercel
+```bash
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Check out [Vercel Deployment Docs](https://nextjs.org/docs/deployment) for more details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+Contributions are welcome! Feel free to submit a pull request.
